@@ -74,12 +74,10 @@ export default {
     },
     onReset(event) {
       event.preventDefault()
-      // Reset our form values
       this.form.id = ''
       this.form.pass = ''
       this.form.email = ''
       this.form.checked = []
-      // Trick to reset/clear native browser form validation state
       this.show = false
       this.$nextTick(() => {
         this.show = true
