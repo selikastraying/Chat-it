@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import Profile from '../views/Profile.vue'
+import ChatView from '../views/ChatView.vue'
 import store from '@/store/index.js'
 import UserServices from '@/services/UserServices.js'
 import LoginForm from '../views/LoginForm.vue'
@@ -38,8 +38,8 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Profile',
-    component: Profile,
+    name: 'ChatView',
+    component: ChatView,
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       if (!store.getters['user/getToken']) {
@@ -52,15 +52,7 @@ const routes = [
               store.dispatch('user/resetState')
               next('/login')
             } else {
-              UserServices.getFriends(store.getters['user/getToken'])
-                .then(friends => {
-                  routeTo.params.friends = friends
-                  next()
-                })
-                .catch(error => {
-                  console.log(error.message)
-                  next()
-                })
+              next()
             }
           })
           .catch(error => {

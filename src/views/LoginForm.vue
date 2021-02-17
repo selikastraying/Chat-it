@@ -58,7 +58,7 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       this.login({ id: this.form.id, pass: this.form.pass }).then(result => {
-        if (result) this.$router.push({ name: 'Profile' })
+        if (result) this.$router.push({ name: 'ChatView' })
       })
     },
     onReset(event) {
